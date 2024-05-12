@@ -123,7 +123,7 @@ app.use(
                 scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://api.mapbox.com", "https://cdn.jsdelivr.net",   ],
                 styleSrc: ["'self'", "'unsafe-inline'", "https://api.mapbox.com", "https://fonts.googleapis.com", "https://cdn.jsdelivr.net"],
                 fontSrc: ["'self'", "https://fonts.gstatic.com"],
-                imgSrc: ["'self'", "data:", "https://res.cloudinary.com"],
+                imgSrc: ["'self'", "data:", "https://res.cloudinary.com","https://images.unsplash.com"],
                 connectSrc: ["'self'", "https://api.mapbox.com", "https://events.mapbox.com"],
                 workerSrc: ["'self'", 'blob:']
             },
@@ -140,6 +140,9 @@ app.use((req, res, next) => {
 })
 
 //middlewares for routes
+app.get('/', (req, res) => {
+    res.render('yelpcampViews/landing');
+})
 app.use('/yelpcamp', yelpcampRoutes);
 app.use('/yelpcamp/:id/reviews',reviewRoutes);
 app.use('/yelpcamp/user', userRoutes);
