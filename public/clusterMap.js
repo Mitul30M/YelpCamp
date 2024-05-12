@@ -1,11 +1,11 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoibWl0dWwzMG0iLCJhIjoiY2x2a2h2dnBiMDVtdzJrcDNheGhtdTRubCJ9.aTHEIWMBRXxJ6IKKUzIJIA';
 const map = new mapboxgl.Map({
     container: 'clusterMap',
-    // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-    style: 'mapbox://styles/mitul30m/clvtcu0gz01xh01qp2iy93lj9',
-    center: [-71.058291, 42.360253],
-    zoom: 12
+    style: 'mapbox://styles/mitul30m/clw3mpmgk02ha01qra4u38nhh', // Change the style to a Mercator-based style
+    center: [-98.289017, 37.127709],
+    zoom: 4,
 });
+
 map.addControl(new mapboxgl.NavigationControl());
 map.on('load', () => {
     // Add a new source from our GeoJSON data and

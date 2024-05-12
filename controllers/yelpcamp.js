@@ -9,9 +9,29 @@ module.exports.renderNewCampForm = (req, res) => {
     res.render('yelpcampViews/new');
 }
 
+module.exports.searchCamps = async (req, res) => {
+    const { query } = req.body;
+    res.redirect(`/yelpcamp?query=${query}`);
+}
+
 module.exports.getCamps = async (req, res) => {
-    const camps = await Camp.find({});
-    res.render('yelpcampViews/home', { camps });
+    let foundResults = 0;
+    if (req.query.query) {
+        const { query } = req.query;
+        const camps = await Camp.find({
+            $or: [
+                { name: { $regex: new RegExp(query, 'i') } }, // Search by campground name
+                { location: { $regex: new RegExp(query, 'i') } } // Search by campground location
+            ]
+        });
+        if (camps.length) {
+            foundResults = camps.length;
+        }
+        res.render('yelpcampViews/home', { camps, foundResults });
+    } else {
+        const camps = await Camp.find({});
+        res.render('yelpcampViews/home', { camps, foundResults });
+    }
 }
 
 module.exports.newCamp = async (req, res, next) => {

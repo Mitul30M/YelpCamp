@@ -30,6 +30,8 @@ router.route('/:id')
 
 router.get('/:id/edit', isLoggedIn, isCampAuthor, catchAsyncError(controller.getCampEditForm));
 
+//search camps by entering name in the search field
+router.post('/search', catchAsyncError(controller.searchCamps));
 
 
 

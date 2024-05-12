@@ -1,12 +1,8 @@
 <%- layout('/yelpcampViews/layouts/boilerplate') %>
 
-
-
     <div class="container pt-5 bg-pink mb-5 header">
         <h1 class="fw-medium ">YelpCamp</h1>
         <p class=" fs-5 mb-4">Discover, Book, and Rate Campgrounds Worldwide.</p>
-
-
 
         <% if (success && success.length) { %>
             <div class="alert alert-primary alert-dismissible fade show my-5" role="alert">
@@ -15,12 +11,26 @@
 
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
+        <% } %>
+        <% if (foundResults) { %>
+            <div class="alert alert-primary alert-dismissible fade show my-5" role="alert">
+            
+                <%= foundResults %> Camps Found!
+            
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
+        <% if (danger && danger.length) { %>
+            <div class="alert alert-secondary alert-dismissible fade show mb-3" role="alert">
+        
+                <%= danger %>
+        
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             <% } %>
     </div>
 
     <div id="clusterMap" class="container-fluid bg-black mb-5" style="height: 55vh;"></div>
-
-
 
     <div class="card-container container pb-5 mt-4">
 
