@@ -1,7 +1,7 @@
 const User = require('../models/users');
 
 module.exports.renderRegisterForm = async (req, res) => {
-    res.render('/yelpcampViews/userviews/register')
+    res.render('yelpcampViews/userviews/register')
 }
 
 module.exports.register = async (req, res) => {
@@ -22,7 +22,7 @@ module.exports.register = async (req, res) => {
 }
 
 module.exports.renderLoginForm = async (req, res) => {
-    res.render('/yelpcampViews/userviews/login')
+    res.render('yelpcampViews/userviews/login')
 }
 
 module.exports.login = (req, res) => {
