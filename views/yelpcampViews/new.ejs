@@ -1,0 +1,48 @@
+<%- layout('/yelpcampViews/layouts/boilerplate') %>
+
+    <div class="container pt-4  mb-4 d-flex justify-content-between w-75 align-items-center">
+        <a href="/yelpcamp" class="link-offset-2 link link-underline link-underline-opacity-0 ">Back</a>
+    </div>
+
+    <div class="container w-50">
+        <form action="/yelpcamp" method="post" class="form-control p-3 form" novalidate enctype="multipart/form-data">
+            <h1 class="text-secondary fw-regular my-4">Add New Campground</h1>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="campName" required placeholder="Misty Camp"
+                    name="camp[name]">
+                <label for="campName" class="text-body-tertiary fw-semibold fs-6">Campground Name</label>
+                <div class="valid-feedback">Sound's Good</div>
+                <div class="invalid-feedback">Please enter the Camp name</div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="campLocation" required placeholder="Boston, Massachusetts"
+                    name="camp[location]">
+                <label for="campLocation" class="text-body-tertiary fw-semibold fs-6">Campground Location</label>
+                <div class="valid-feedback">Sound's Good</div>
+                <div class="invalid-feedback">Please enter the Camp Location</div>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text text-body-tertiary fw-semibold fs-6">$</span>
+                <input type="text" class="form-control" required aria-label="Amount (to the nearest dollar)"
+                    name="camp[price]">
+                <div class="valid-feedback">Sound's Good</div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control " id="campDescription" required name="camp[description]">
+                <label for="campDescription" class="text-body-tertiary fw-semibold fs-6">Campground Description</label>
+                <div class="valid-feedback">Sound's Good</div>
+                <div class="invalid-feedback">Please enter the Camp Description</div>
+            </div>
+            <!-- <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="campImg" required name="camp[img]">
+                <label for="campImg" class="text-body-tertiary fw-semibold fs-6">Campground Image URL</label>
+            </div> -->
+
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="image" name="image" multiple>
+                <label class="input-group-text" for="image" name="image">Upload</label>
+            </div>
+
+            <button class="btn btn-primary py-2 my-3" type="submit">Add new Campground</button>
+        </form>
+    </div>

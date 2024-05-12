@@ -1,0 +1,78 @@
+<%- layout('/yelpcampViews/layouts/boilerplate') %>
+
+    <div class="container pt-4  mb-4 d-flex justify-content-between w-75 align-items-center">
+        <a href="/yelpcamp/<%= camp._id %>" class="link-offset-3 link-underline link-underline-opacity-0 ">Back</a>
+    </div>
+
+    <div class="container w-50">
+        <form action="/yelpcamp/<%= camp._id %>?_method=PATCH" method="post" class="form-control p-3 pb-0 form" novalidate enctype="multipart/form-data">
+                    <h1 class="text-secondary fw-regular my-4 ">Edit Campground</h1>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="campName" required placeholder="Misty Camp"
+                    name="camp[name]" value="<%= camp.name %>">
+                <label for="campName" class="text-body-tertiary fw-semibold fs-6">Campground Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="campLocation" required value="<%= camp.location %>"
+                    placeholder="Boston, Massachusetts" name="camp[location]">
+                <label for="campLocation" class="text-body-tertiary fw-semibold fs-6">Campground Location</label>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text text-body-tertiary fw-semibold fs-6">$</span>
+                <input type="text" class="form-control" value="<%= camp.price %>" required
+                    aria-label="Amount (to the nearest dollar)" name="camp[price]">
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" value="<%= camp.description %>" id="campDescription" required
+                    name="camp[description]">
+                <label for="campDescription" class="text-body-tertiary fw-semibold fs-6">Campground Description</label>
+            </div>
+            <!-- <div class="form-floating mb-3">
+                <input type="text" class="form-control" value="<%= camp.img %>" id="campImg" required name="camp[img]">
+                <label for="campImg" class="text-body-tertiary fw-semibold fs-6">Campground Image URL</label>
+            </div> -->
+
+            <!-- file input to upload imgs -->
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="image" name="image" multiple>
+                <label class="input-group-text" for="image" name="image">Upload new Images</label>
+            </div>
+
+
+            <!-- accordion to delete imgs which are already uploaded -->
+
+            <div class="accordion mb-3" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            Select the Images which you wish to <b class="text-danger ms-2">DELETE</b>
+                        </button>
+                    </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body d-flex flex-wrap">
+
+                            <% camp.img.forEach((img,i) => { %>
+                                <div class="form-check form-check-inine ">
+                                    <input class="form-check-input" type="checkbox" id="img-<%= i %>" value="<%= img.fileName %>" name="deleteImgs[]">
+                                    <label class="form-check-label" for="img-<%= i %>">
+                                        <img crossorigin="anonymous" src="<%= img.url %>" alt="" class="img-thumbnail w-50 h-50 rounded">
+                                    </label>
+                                </div>
+                            <% }) %>
+                        </div>
+                        </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            <button class="btn btn-primary my-4 px-5 py-2 text-light d-block m-auto" type="submit">Edit Campground</button>
+        </form>
+    </div>

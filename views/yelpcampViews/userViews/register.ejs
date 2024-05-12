@@ -1,0 +1,44 @@
+<%- layout('/yelpcampViews/layouts/boilerplate') %>
+
+    <div class="container pt-4  mb-4 d-flex justify-content-between w-75 align-items-center">
+        <a href="/yelpcamp" class="link-offset-2 link link-underline link-underline-opacity-0 ">Back</a>
+    </div>
+
+    <div class="container w-50">
+       
+        <form action="/yelpcamp/user/register" method="post" class="form-control p-3 form" novalidate>
+            <h1 class="text-secondary fw-regular my-4 mb-5">Register Account</h1>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" required name="email">
+                <label for="email" class="text-body-tertiary fw-semibold fs-6">Email</label>
+                <div class="valid-feedback">Sound's Good</div>
+                <div class="invalid-feedback">Please enter the Email</div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="username" required name="username">
+                <label for="username" class="text-body-tertiary fw-semibold fs-6">Username</label>
+                <div class="valid-feedback">Sound's Good</div>
+                <div class="invalid-feedback">Please enter the Username</div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="password" required name="password">
+                <label for="password" class="text-body-tertiary fw-semibold fs-6">Password</label>
+                <div class="valid-feedback">Sound's Good</div>
+                <div class="invalid-feedback">Please enter the Password</div>
+            </div>
+
+            <button class="btn btn-primary py-2" type="submit">Register</button>
+
+        </form>
+
+        <% if (danger && danger.length) { %>
+            <div class="alert alert-secondary alert-dismissible fade show my-3" role="alert">
+        
+                <%= danger %>
+        
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
+    </div>

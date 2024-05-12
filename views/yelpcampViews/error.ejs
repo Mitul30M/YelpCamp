@@ -1,0 +1,26 @@
+<%- layout('/yelpcampViews/layouts/boilerplate') %>
+
+
+    <div class="container mt-5">
+
+        <div class="row">
+            <div class="alert col-6 offset-3 alert-danger" role="alert">
+                <h4 class="alert-heading">
+                    <%= status %>
+                </h4>
+                <p>
+                    <%= err.message %>
+                </p>
+                <hr>
+                <% if (process.env.NODE_ENV ==="production" ) { %>
+                    <p class="mb-0">
+                        <%= err.stack %>
+                    </p>
+
+                    <% } %>
+            </div>
+        </div>
+
+
+
+    </div>
