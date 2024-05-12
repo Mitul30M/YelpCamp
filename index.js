@@ -60,6 +60,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 
+//local variabls : all views have access to these
+
+
 const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
@@ -91,6 +94,14 @@ const sessionConfig = {
 };
 app.use(session(sessionConfig));
 app.use(flash());
+
+app.use((req, res, next) => {
+    // console.log(req.session);
+    res.locals.currentUser = req.user;
+    res.locals.success = req.flash('success');
+    res.locals.danger = req.flash('danger');
+    next();
+})
 
 //configuring passport-local for Auth
 passport.use(new LocalStrategy(User.authenticate()));
@@ -126,14 +137,7 @@ app.use(
     })
 );
 
-//local variabls : all views have access to these
-app.use((req, res, next) => {
-    // console.log(req.session);
-    res.locals.currentUser = req.user;
-    res.locals.success = req.flash('success');
-    res.locals.danger = req.flash('danger');
-    next();
-})
+
 
 //middlewares for routes
 app.use('/yelpcamp', yelpcampRoutes);
@@ -154,5 +158,5 @@ app.use((err, req, res, next) => {
 
 //port specifier
 app.listen(3030, () => {
-    console.log("YelpCamp live on 3030 - mitul");
+    console.log("YelpCamp is live - project by Mitul30M");
 })
