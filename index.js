@@ -95,13 +95,7 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 app.use(flash());
 
-app.use((req, res, next) => {
-    // console.log(req.session);
-    res.locals.currentUser = req.user;
-    res.locals.success = req.flash('success');
-    res.locals.danger = req.flash('danger');
-    next();
-})
+
 
 //configuring passport-local for Auth
 passport.use(new LocalStrategy(User.authenticate()));
@@ -137,7 +131,13 @@ app.use(
     })
 );
 
-
+app.use((req, res, next) => {
+    // console.log(req.session);
+    res.locals.currentUser = req.user;
+    res.locals.success = req.flash('success');
+    res.locals.danger = req.flash('danger');
+    next();
+})
 
 //middlewares for routes
 app.use('/yelpcamp', yelpcampRoutes);
