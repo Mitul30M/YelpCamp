@@ -26,7 +26,7 @@ module.exports.getCamps = async (req, res) => {
         }
         if (page) {
             camps = camps.slice((page * 18) - 18, page * 18);    //displaying 18camps per page
-            console.log(camps.length, page);
+            // console.log(camps.length, page);
         }
         return res.render('yelpcampViews/home', { camps, foundResults, allCamps, page, searchQuery });
     }
@@ -34,7 +34,7 @@ module.exports.getCamps = async (req, res) => {
     foundResults = camps.length;
     if (page) {
         camps = camps.slice((page * 18) - 18, page * 18);    //displaying 18camps per page
-        console.log(camps.length, page);
+        // console.log(camps.length, page);
     }
     res.render('yelpcampViews/home', { camps, foundResults, allCamps, page, searchQuery });
 
