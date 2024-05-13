@@ -12,15 +12,17 @@ const geocoder = mapboxGeocoding({ accessToken: mapboxToken });
 
 const params = {
     collections: "DSpWkevZa94,10489597,8667598",
-    client_id: "fXWuBzwrcAGJR_Kf7CaYYD46lff3CbK76HBeW0zNQwk",
+    client_id: "4oDIt3cat9zd4DTRnivE4MazovlCYIw2uxogJv6xEhY",
     orientation: "landscape"
 }
 
 
 const cities = require('./cities');
 
+const dbUrl = process.env.MONGO_ATLAS_DB_URL;
+// const dbUrl = "mongodb://127.0.0.1:27017/yelp-camp";
 
-mongoose.connect("mongodb://127.0.0.1:27017/yelp-camp")
+mongoose.connect(dbUrl)
     .then(() => {
         console.log("connection to database successfull");
         const seedData = async () => {
