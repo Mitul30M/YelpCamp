@@ -9,20 +9,16 @@ module.exports.renderNewCampForm = (req, res) => {
     res.render('yelpcampViews/new');
 }
 
-module.exports.searchCamps = async (req, res) => {
-    const { query } = req.body;
-    res.redirect(`/yelpcamp?query=${query}`);
-}
-
 module.exports.getCamps = async (req, res) => {
     let foundResults = 0;
-    let { query, page = 1 } = req.query;
+    const { page = 1 } = req.query;
+    const { searchQuery } = (req.body.searchQuery) ? req.body : req.query;
     const allCamps = await Camp.find({});
-    if (query) {
+    if (searchQuery) {
         let camps = await Camp.find({
             $or: [
-                { name: { $regex: new RegExp(query, 'i') } }, // Search by campground name
-                { location: { $regex: new RegExp(query, 'i') } } // Search by campground location
+                { name: { $regex: new RegExp(searchQuery, 'i') } }, // Search by campground name
+                { location: { $regex: new RegExp(searchQuery, 'i') } } // Search by campground location
             ]
         });
         if (camps.length) {
@@ -32,7 +28,7 @@ module.exports.getCamps = async (req, res) => {
             camps = camps.slice((page * 18) - 18, page * 18);    //displaying 18camps per page
             console.log(camps.length, page);
         }
-        return res.render('yelpcampViews/home', { camps, foundResults, allCamps, page, query });
+        return res.render('yelpcampViews/home', { camps, foundResults, allCamps, page, searchQuery });
     }
     let camps = allCamps;
     foundResults = camps.length;
@@ -40,7 +36,7 @@ module.exports.getCamps = async (req, res) => {
         camps = camps.slice((page * 18) - 18, page * 18);    //displaying 18camps per page
         console.log(camps.length, page);
     }
-    res.render('yelpcampViews/home', { camps, foundResults, allCamps, page });
+    res.render('yelpcampViews/home', { camps, foundResults, allCamps, page, searchQuery });
 
 }
 

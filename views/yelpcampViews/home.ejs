@@ -37,24 +37,24 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center text-dark">
                 <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
+                    <a class="page-link <%= (parseInt(page)===1)?'disabled':'' %>" href="/yelpcamp?page=<%= (parseInt(page)!==1)? parseInt(page)-1 : '' %><%= (searchQuery) ? `&searchQuery=${searchQuery}` : '' %>" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
                 <!-- <li class="page-item"><a class="page-link" href="#">1</a></li> -->
                 <% for (let pageNo=1; pageNo <=(Math.floor(foundResults / 18) + 1); pageNo++) { %>
                     <li class="page-item <%= (pageNo === parseInt(page)) ? 'active' : '' %>">
-                        <a class="page-link" href="/yelpcamp?page=<%= pageNo %>">
+                        <a class="page-link" href="/yelpcamp?page=<%= pageNo %><%= (searchQuery) ? `&searchQuery=${searchQuery}` : '' %>">
                             <%= pageNo %>
                         </a>
                     </li>
                     <% } %>
 
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
+                    <li class="page-item">
+                        <a class="page-link <%= (parseInt(page)===(Math.floor(foundResults / 18) + 1))?'disabled':'' %>" href="/yelpcamp?page=<%= (parseInt(page)!==(Math.floor(foundResults / 18) + 1))? parseInt(page)+1 : '' %><%= (searchQuery) ? `&searchQuery=${searchQuery}` : '' %>" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
             </ul>
         </nav>
     </div>
