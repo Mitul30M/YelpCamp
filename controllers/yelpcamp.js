@@ -16,9 +16,10 @@ module.exports.searchCamps = async (req, res) => {
 
 module.exports.getCamps = async (req, res) => {
     let foundResults = 0;
-    if (req.query.query) {
-        const { query } = req.query;
-        const camps = await Camp.find({
+    let { query, page = 1 } = req.query;
+    const allCamps = await Camp.find({});
+    if (query) {
+        let camps = await Camp.find({
             $or: [
                 { name: { $regex: new RegExp(query, 'i') } }, // Search by campground name
                 { location: { $regex: new RegExp(query, 'i') } } // Search by campground location
@@ -27,11 +28,20 @@ module.exports.getCamps = async (req, res) => {
         if (camps.length) {
             foundResults = camps.length;
         }
-        res.render('yelpcampViews/home', { camps, foundResults });
-    } else {
-        const camps = await Camp.find({});
-        res.render('yelpcampViews/home', { camps, foundResults });
+        if (page) {
+            camps = camps.slice((page * 18) - 18, page * 18);    //displaying 18camps per page
+            console.log(camps.length, page);
+        }
+        return res.render('yelpcampViews/home', { camps, foundResults, allCamps, page, query });
     }
+    let camps = allCamps;
+    foundResults = camps.length;
+    if (page) {
+        camps = camps.slice((page * 18) - 18, page * 18);    //displaying 18camps per page
+        console.log(camps.length, page);
+    }
+    res.render('yelpcampViews/home', { camps, foundResults, allCamps, page });
+
 }
 
 module.exports.newCamp = async (req, res, next) => {
@@ -78,7 +88,7 @@ module.exports.getCampEditForm = async (req, res) => {
 module.exports.updateCamp = async (req, res) => {
     const camp = req.body.camp;
     const { id } = req.params;
-    
+
     const updateCamp = await Camp.findByIdAndUpdate(id, { ...camp }, { runValidators: true, new: true });
     req.files.forEach(file => (updateCamp.img.push({ url: file.path, fileName: file.filename })));
     const geoData = await geocoder.forwardGeocode({

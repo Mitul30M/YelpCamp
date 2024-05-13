@@ -28,25 +28,25 @@ map.on('load', () => {
         paint: {
             // Use step expressions (https://docs.mapbox.com/style-spec/reference/expressions/#step)
             // with three steps to implement three types of circles:
-            //   * Blue, 20px circles when point count is less than 100
-            //   * Yellow, 30px circles when point count is between 100 and 750
-            //   * Pink, 40px circles when point count is greater than or equal to 750
+            //   * #AADEC2, 20px circles when point count is less than 10
+            //   * #EDB0B9, 30px circles when point count is between 10 and 30
+            //   * Pink, 40px circles when point count is greater than or equal to 30
             'circle-color': [
                 'step',
                 ['get', 'point_count'],
                 '#AADEC2',
                 10,
-                '#EDAFB8',
-                100,
+                '#EDB0B9',
+                30,
                 '#fff'
             ],
             'circle-radius': [
                 'step',
                 ['get', 'point_count'],
                 20,
-                100,
+                10,
                 30,
-                750,
+                30,
                 40
             ]
         }
@@ -70,9 +70,9 @@ map.on('load', () => {
         source: 'camps',
         filter: ['!', ['has', 'point_count']],
         paint: {
-            'circle-color': '#AADEC2',
-            'circle-radius': 10,
-            'circle-stroke-width': 5,
+            'circle-color': '#000',
+            'circle-radius': 5,
+            'circle-stroke-width': 2.5,
             'circle-stroke-color': '#fff'
         }
     });
