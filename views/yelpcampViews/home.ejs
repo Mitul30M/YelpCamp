@@ -11,34 +11,61 @@
 
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        <% } %>
-        <% if (foundResults) { %>
-            <div class="alert alert-primary alert-dismissible fade show my-5" role="alert">
-            
-                <%= foundResults %> Camps Found!
-            
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        <% } %>
-        <% if (danger && danger.length) { %>
-            <div class="alert alert-secondary alert-dismissible fade show mb-3" role="alert">
-        
-                <%= danger %>
-        
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
             <% } %>
+                <% if (foundResults) { %>
+                    <div class="alert alert-primary alert-dismissible fade show my-5" role="alert">
+
+                        <%= foundResults %> Camps Found!
+
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <% } %>
+                        <% if (danger && danger.length) { %>
+                            <div class="alert alert-secondary alert-dismissible fade show mb-3" role="alert">
+
+                                <%= danger %>
+
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                            </div>
+                            <% } %>
     </div>
 
     <div id="clusterMap" class="container-fluid bg-black mb-5" style="height: 55vh;"></div>
 
-    <div class="card-container container pb-5 mt-4">
+    <div class="container mb-5">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center text-dark">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <!-- <li class="page-item"><a class="page-link" href="#">1</a></li> -->
+                <% for (let pageNo=1; pageNo <=(Math.floor(foundResults / 18) + 1); pageNo++) { %>
+                    <li class="page-item <%= (pageNo === parseInt(page)) ? 'active' : '' %>">
+                        <a class="page-link" href="/yelpcamp?page=<%= pageNo %>">
+                            <%= pageNo %>
+                        </a>
+                    </li>
+                    <% } %>
+
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="card-container align-content-md-start justify-content-lg-center  container pb-5 mt-4">
 
         <% for( let camp of camps ) { %>
 
             <div class="card home-cards">
                 <div class="p-2 border-bottom">
-                    <%= camp.location %> 
+                    <%= camp.location %>
                 </div>
                 <% if (camp.img.length) { %>
                     <div id="carousel<%= camp._id %>"
@@ -58,7 +85,8 @@
                                 <div class="carousel-inner rounded w-100 h-100">
                                     <% camp.img.forEach((image,i)=> { %>
                                         <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
-                                            <img src="<%= image.url %>" crossorigin="anonymous" class="w-100 h-100 img-fluid" alt="...">
+                                            <img src="<%= image.url %>" crossorigin="anonymous"
+                                                class="w-100 h-100 img-fluid" alt="...">
                                         </div>
                                         <% }) %>
                                 </div>
@@ -95,13 +123,14 @@
             <% } %>
 
     </div>
-
-
-
     
+
+
+
+
     <script>
         const mapToken = '<%- process.env.MAPBOX_TOKEN %>';
-        const camps = { features: <%- JSON.stringify(camps) %> };
+        const camps = { features: <%- JSON.stringify(allCamps) %> };
         console.log(camps);
     </script>
     <script src="/clusterMap.js"></script>
