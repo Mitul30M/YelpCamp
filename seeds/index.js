@@ -12,7 +12,7 @@ const geocoder = mapboxGeocoding({ accessToken: mapboxToken });
 
 const params = {
     collections: "DSpWkevZa94,10489597,8667598",
-    client_id: "xF5RsdVsXfpM4CBhM-zNd4FUm7kXHNbHwsRgC6jskKs",
+    client_id: "fXWuBzwrcAGJR_Kf7CaYYD46lff3CbK76HBeW0zNQwk",
     orientation: "landscape"
 }
 
@@ -49,7 +49,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/yelp-camp")
                 }
 
                 const camp = new Camp({
-                    author: '65feaf9515902790e7e2c473',
+                    author: '6640804415c373ee80c58784',
                     name,
                     geometry: await getCoords(),
                     location,
