@@ -17,7 +17,7 @@ module.exports.getCamps = async (req, res) => {
     if (searchQuery) {
         // Decode the searchQuery
         searchQuery = decodeURIComponent(searchQuery);
-        console.log(searchQuery);
+        // console.log(searchQuery);
         let camps = await Camp.find({
             $or: [
                 { name: { $regex: new RegExp(searchQuery, 'i') } }, // Search by campground name
