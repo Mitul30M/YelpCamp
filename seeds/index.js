@@ -32,7 +32,7 @@ mongoose.connect(dbUrl)
             for (let i = 0; i < 50; ++i) {
                 
                 let randomNo = Math.floor(Math.random() * 1000) + 1;
-                let location = `${cities[randomNo].city} ${cities[randomNo].state}`;
+                let location = `${cities[randomNo].city}, ${cities[randomNo].state}`;
                 let name = `${cities[randomNo].city} Camps`
 
                 const getImg = async () => {
@@ -62,7 +62,7 @@ mongoose.connect(dbUrl)
                             fileName: `CampImg${randomNo}`
                         }
                     ],
-                    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde molestiae ducimus magnam illum accusamus, consequuntur incidunt nihil consequatur voluptatem architecto consectetur corporis quam in quisquam dignissimos voluptas quasi deleniti sapiente."
+                    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde molestiae ducimus magnam illum accusamus."
                 });
                 await camp.save();
                 console.log(camp);
