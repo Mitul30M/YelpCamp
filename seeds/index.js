@@ -12,7 +12,7 @@ const geocoder = mapboxGeocoding({ accessToken: mapboxToken });
 
 const params = {
     collections: "DSpWkevZa94,10489597,8667598",
-    client_id: "4oDIt3cat9zd4DTRnivE4MazovlCYIw2uxogJv6xEhY",
+    client_id: "dwRYeGLw__e4sFOprfoJBvvSM_eJBltk9BjrQzgnDRo",
     orientation: "landscape"
 }
 

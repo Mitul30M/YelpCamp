@@ -96,6 +96,13 @@ map.on('load', () => {
         );
     });
 
+    // Create a popup, but don't add it to the map yet.
+    const popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+    });
+
+
     // When a click event occurs on a feature in
     // the unclustered-point layer, open a popup at
     // the location of the feature, with
@@ -114,15 +121,53 @@ map.on('load', () => {
         new mapboxgl.Popup()
             .setLngLat(coordinates)
             .setHTML(
-                `<a href="${unclusterPointText.campLink}" class="link-underline-opacity-0"><h4 class="fs-6 text-secondary fw-bold mb-0">${unclusterPointText.campName}</h4></a>`
+                `
+
+                <div class="w-100 p-0">
+                      <div class="card-body">
+                        <h5 class="fw-bold fs-6">${unclusterPointText.campName}</h5>
+                        <img src="${unclusterPointText.getCampBannerImg}" class="card-img-bottom rounded">    
+                       <a href="${unclusterPointText.campLink}" class="btn-outline-dark btn btn-sm my-2 fs-6 text-align-center">Exolore</a>
+                     </div>
+                </div>
+                
+                `
             )
             .addTo(map);
     });
 
-    map.on('mouseenter', 'clusters', () => {
+
+    //when user hovers over an unclustered point
+    map.on('mouseenter', 'unclustered-point', (e) => {
         map.getCanvas().style.cursor = 'pointer';
+
+        const unclusterPointText = e.features[0].properties;
+        const coordinates = e.features[0].geometry.coordinates.slice();
+
+        // Ensure that if the map is zoomed out such that
+        // multiple copies of the feature are visible, the
+        // popup appears over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        popup
+            .setLngLat(coordinates)
+            .setHTML(
+                `
+                <div class="w-100 p-0">
+                      <div class="card-body">
+                        <h5 class="fw-bold fs-6">${unclusterPointText.campName}</h5>
+                        <img src="${unclusterPointText.getCampBannerImg}" class="card-img-bottom rounded">    
+                       <a href="${unclusterPointText.campLink}" class="btn-outline-dark btn btn-sm my-2 fs-6">Exolore</a>
+                     </div>
+                </div>
+                
+                `
+            ).addTo(map);
     });
-    map.on('mouseleave', 'clusters', () => {
+    map.on('mouseleave', 'unclustered-point', () => {
         map.getCanvas().style.cursor = '';
+        popup.remove();
     });
 });

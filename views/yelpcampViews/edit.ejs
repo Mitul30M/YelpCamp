@@ -1,11 +1,11 @@
 <%- layout('/yelpcampViews/layouts/boilerplate') %>
 
-    <div class="container pt-4  mb-4 d-flex justify-content-between w-75 align-items-center">
+    <div class="container pt-4  mb-4 d-flex justify-content-between w-100 align-items-center">
         <a href="/yelpcamp/<%= camp._id %>" class="link-offset-3 link-underline link-underline-opacity-0 ">Back</a>
     </div>
 
-    <div class="container w-50">
-        <form action="/yelpcamp/<%= camp._id %>?_method=PATCH" method="post" class="form-control p-3 pb-0 form" novalidate enctype="multipart/form-data">
+    <div class="container w-100">
+        <form action="/yelpcamp/<%= camp._id %>?_method=PATCH" method="post" class=" w-lg-50 w-100 m-auto p-3 form" novalidate enctype="multipart/form-data">
                     <h1 class="text-secondary fw-regular my-4 ">Edit Campground</h1>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="campName" required placeholder="Misty Camp"

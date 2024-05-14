@@ -19,9 +19,9 @@
 
     <body>
 
-        <nav class="navbar navbar-expand-lg bg-light sticky-top" data-bs-theme="light">
-            <div class="container-fluid py-2">
-                <a class="navbar-brand  text-primary fw-semibold" href="/">YelpCamp</a>
+        <nav class="navbar navbar-expand-lg sticky-top bg-white" data-bs-theme="light">
+            <div class="container-fluid py-1">
+                <a class="navbar-brand  text-primary fw-semibold" href="/" style="display: flex;align-items: center;"><img src="/logo.png" alt="" style="max-width: 30px;"> YelpCamp</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -30,10 +30,10 @@
                 <div class="collapse navbar-collapse m-auto" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link link-dark" aria-current="page" href="/yelpcamp">All Camps</a>
+                            <a class="link link-dark link-opacity-50-hover nav-link" aria-current="page" href="/yelpcamp">All Camps</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link-dark" aria-current="page" href="/yelpcamp/new">Add New
+                            <a class=" link link-dark link-opacity-50-hover  nav-link" aria-current="page" href="/yelpcamp/new">Add New
                                 Camp</a>
                         </li>
                         
@@ -64,10 +64,10 @@
                     
                     <div class="account my-3 my-lg-0">
                         <% if (!currentUser) { %>
-                            <a class="link-primary" href="/yelpcamp/user/login">Login</a>
-                            <a class="link-secondary ms-2" href="/yelpcamp/user/register">Register</a>
+                            <a class="btn-outline-primary btn-sm btn" href="/yelpcamp/user/login">Login</a>
+                            <a class="btn-outline-secondary btn-sm btn ms-2" href="/yelpcamp/user/register">Register</a>
                             <% } else { %>
-                                <a class="link-danger" href="/yelpcamp/user/logout">Logout</a>
+                                <a class="btn-outline-danger btn-sm btn" href="/yelpcamp/user/logout">Logout</a>
                                 <% } %>
                     </div>
 

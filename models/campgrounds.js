@@ -54,6 +54,9 @@ campSchema.virtual("properties.campLink").get(function (){
 campSchema.virtual("properties.campName").get(function () {
     return `${this.name}`;
 })
+campSchema.virtual("properties.getCampBannerImg").get(function () {
+    return `${this.img[0].url}`;
+})
 
 campSchema.post('findOneAndDelete', async function (doc) {
     if (doc) {

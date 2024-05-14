@@ -1,6 +1,6 @@
 <%- layout('/yelpcampViews/layouts/boilerplate') %>
 
-    <div class="container pt-5 bg-pink mb-5 header">
+    <div class="container pt-5 bg-pink mb-5 header" id="flash-msgs">
         <h1 class="fw-medium ">YelpCamp</h1>
         <p class=" fs-5 mb-4">Discover, Book, and Rate Campgrounds Worldwide.</p>
 
@@ -33,9 +33,9 @@
 
     <div id="clusterMap" class="container-fluid bg-black mb-5" style="height: 55vh;"></div>
 
-    <div class="container mb-5">
+    <div class="container mb-5" id="pagination">
         <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center text-dark">
+            <ul class="pagination justify-content-center text-dark d-flex flex-wrap align-content-center">
                 <li class="page-item">
                     <a class="page-link <%= (parseInt(page)===1)?'disabled':'' %>" href="/yelpcamp?page=<%= (parseInt(page)!==1)? parseInt(page)-1 : '' %><%= (searchQuery) ? `&searchQuery=${searchQuery}` : '' %>" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
@@ -59,7 +59,7 @@
         </nav>
     </div>
 
-    <div class="card-container align-content-md-start justify-content-lg-center  container pb-5 mt-4">
+    <div class="card-container align-items-center justify-content-lg-start justify-content-center  container pb-5 mt-4" id="card-cont">
 
         <% for( let camp of camps ) { %>
 
@@ -109,14 +109,17 @@
                     <% } %>
                         <div
                             class="card-body text-secondary p-2 mt-2 d-flex justify-content-between align-items-center">
-                            <h2 class="card-title mb-2">
+                            <h2 class="card-title mb-1">
                                 <a class="card-title fs-4 fw-semi link link-underline link-underline-opacity-0 link-offset-2 link-opacity-50-hover "
                                     href="/yelpcamp/<%= camp._id %>">
                                     <%= camp.name %>
                                 </a>
                             </h2>
-                            <p class="card-text fw-medium fs-4 text-primary">$<%= camp.price %>
+                            <p class="card-text fw-medium fs-4 text-grey">$<%= camp.price %>
                             </p>
+                        </div>
+                        <div class="card-body p-2">
+                            <p class="card-text fw-medium fs-6" style="color: rgba(12, 23, 29, 0.328);"><%= camp.description %></p>
                         </div>
             </div>
 
