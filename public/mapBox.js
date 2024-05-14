@@ -5,7 +5,7 @@ console.log(campInfo);
 campGeometry = JSON.parse(campGeometry);
 const map = new mapboxgl.Map({
     container: 'map', // container ID
-    style: 'mapbox://styles/mitul30m/clvtcu0gz01xh01qp2iy93lj9', // style URL
+    style: 'mapbox://styles/mitul30m/clw3mpmgk02ha01qra4u38nhh', // style URL
     center: campGeometry.coordinates, // starting position [lng, lat]
     zoom: 13 // starting zoom
 });
