@@ -1,12 +1,20 @@
-# [YelpCamp](https://yelpcamp-boqf.onrender.com)
+# YelpCamp - project by [Mitul30M](https://github.com/Mitul30M)
 
-<p>
-YelpCamp is a camping site application that allows users to view, create, edit, and review campgrounds around the world. Built with Node.js, Express, and MongoDB, it features full CRUD functionality, user authentication, and session management.
-</p>
 
-![Screenshot (260)](https://github.com/Mitul30M/YelpCamp/assets/120619177/b602a535-7592-4288-aa5d-c9063bfafc89)
-![Screenshot (266)](https://github.com/Mitul30M/YelpCamp/assets/120619177/2c1a0ff3-3ddf-499a-ae6d-3ae5df163d7c)
-![Screenshot (264)](https://github.com/Mitul30M/YelpCamp/assets/120619177/83aa4057-2cec-4cdc-a3f4-cea9ad7437db)
+[YelpCamp](https://yelpcamp-boqf.onrender.com) is a camping site application that allows users to view, create, edit, and review campgrounds around the world. Built with Node.js, Express, and MongoDB, it features full CRUD functionality, user authentication, and session management.
+
+
+![Screenshot (274)](https://github.com/Mitul30M/YelpCamp/assets/120619177/58a4499a-28d4-49be-a244-26ea6f9bcd66)
+
+![Screenshot (275)](https://github.com/Mitul30M/YelpCamp/assets/120619177/4248ad39-6a4e-44a7-bbb2-e504a70d7a94)
+
+![Screenshot (270)](https://github.com/Mitul30M/YelpCamp/assets/120619177/0dccb579-8726-40fb-83ef-faf603786a5f)
+
+![Screenshot (268)](https://github.com/Mitul30M/YelpCamp/assets/120619177/36357be2-bd6d-45c4-826e-3e7f53ff2bb5)
+
+![Screenshot (283)](https://github.com/Mitul30M/YelpCamp/assets/120619177/c14dfc96-b796-4df8-9dad-1223bdacd6ec)
+
+
 
 
 
@@ -71,6 +79,40 @@ To run the application on your local machine:
 * [Helmet](https://helmetjs.github.io/) - Helps secure Express apps by setting various HTTP headers.
 * [Express-Session](https://github.com/expressjs/session) - Session middleware.
 * [Method-Override](https://github.com/expressjs/method-override) - Use HTTP verbs like PUT or DELETE in places where the client doesn't support it.
+
+## Project Dependencies
+
+### Dependencies
+
+- **[@mapbox/mapbox-sdk](https://www.npmjs.com/package/@mapbox/mapbox-sdk)**: Mapbox SDK for Node.js.
+- **[axios](https://www.npmjs.com/package/axios)**: Promise-based HTTP client for the browser and Node.js.
+- **[bootstrap](https://getbootstrap.com/)**: Front-end framework for developing responsive and mobile-first websites.
+- **[cloudinary](https://cloudinary.com/documentation/node_integration)**: Cloud-based image and video management service.
+- **[connect-flash](https://www.npmjs.com/package/connect-flash)**: Flash message middleware for Connect/Express.
+- **[connect-mongo](https://www.npmjs.com/package/connect-mongo)**: MongoDB session store for Express and Connect.
+- **[dotenv](https://www.npmjs.com/package/dotenv)**: Loads environment variables from a `.env` file into `process.env`.
+- **[ejs](https://ejs.co/)**: Embedded JavaScript templates for rendering dynamic content.
+- **[ejs-mate](https://www.npmjs.com/package/ejs-mate)**: EJS layouts for Express.
+- **[express](https://expressjs.com/)**: Web application framework for Node.js.
+- **[express-mongo-sanitize](https://www.npmjs.com/package/express-mongo-sanitize)**: Middleware to sanitize user-supplied data to prevent MongoDB Operator Injection.
+- **[express-session](https://www.npmjs.com/package/express-session)**: Session middleware for Express.
+- **[helmet](https://helmetjs.github.io/)**: Secure Express apps with various HTTP headers.
+- **[joi](https://joi.dev/)**: Object schema description language and validator for JavaScript objects.
+- **[method-override](https://www.npmjs.com/package/method-override)**: Override HTTP verbs for Express middleware.
+- **[mongoose](https://mongoosejs.com/)**: MongoDB object modeling for Node.js.
+- **[multer](https://www.npmjs.com/package/multer)**: Middleware for handling `multipart/form-data`, primarily used for file uploads.
+- **[multer-storage-cloudinary](https://www.npmjs.com/package/multer-storage-cloudinary)**: Multer storage engine for Cloudinary.
+- **[nodemon](https://nodemon.io/)**: Monitor for any changes in your source and automatically restart your server.
+- **[passport](http://www.passportjs.org/)**: Simple, unobtrusive authentication for Node.js.
+- **[passport-local](https://www.npmjs.com/package/passport-local)**: Passport strategy for authenticating with a username and password.
+- **[passport-local-mongoose](https://www.npmjs.com/package/passport-local-mongoose)**: Passport plugin for Mongoose with built-in username/password hashing.
+- **[sanitize-html](https://www.npmjs.com/package/sanitize-html)**: HTML and text sanitization library.
+
+### Development Dependencies
+
+- **[@types/sanitize-html](https://www.npmjs.com/package/@types/sanitize-html)**: TypeScript type definitions for sanitize-html.
+
+
 
 ## Authors
 
