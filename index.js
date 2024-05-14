@@ -6,8 +6,8 @@ if (process.env.NODE_ENV !== "production") {
 const express = require('express');
 const mongoose = require('mongoose');
 
-// const dbUrl = process.env.MONGO_ATLAS_DB_URL;
-const dbUrl = "mongodb://127.0.0.1:27017/yelp-camp";
+const dbUrl = process.env.MONGO_ATLAS_DB_URL;
+// const dbUrl = "mongodb://127.0.0.1:27017/yelp-camp";
 
 const path = require('path');
 const methodOverride = require('method-override');
